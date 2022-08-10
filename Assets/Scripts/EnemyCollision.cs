@@ -14,7 +14,6 @@ public class EnemyCollision : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         player.GetComponent<PlayerController>().enemiesRemaining --;
-        Destroy(collision);
         Destroy(this.gameObject);
     }
 }

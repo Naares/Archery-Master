@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public GameObject arrow;
     public int vellocity;
     public int enemiesRemaining;
+    public Camera mainCamera;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +25,7 @@ public class PlayerController : MonoBehaviour
         {
             showVictoryScreen();
         }
-        if(numberOfArrows == 0)
+        if(numberOfArrows < 0)
         {
             showLoseScreen("Out of ammo");
         }
@@ -38,6 +39,7 @@ public class PlayerController : MonoBehaviour
         //Create spwan position
         //Instantinate
         GameObject instancedArrow = Instantiate(arrow);
+        instancedArrow.GetComponent<CameraFollow>().mainCamera = mainCamera;
         //cetner to player position - so we don't have to set it up in every level
         instancedArrow.transform.position = this.transform.position;
         Rigidbody2D instacedArrowRigidBody = instancedArrow.GetComponent<Rigidbody2D>();
